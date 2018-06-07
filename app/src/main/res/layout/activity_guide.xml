@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="20dp"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context="com.vinhgroup.numbertransfer.View.Guide.GuideActivity">
+
+    <TextView
+        android:textSize="50dp"
+        android:layout_gravity="center"
+        android:text="Hướng dẫn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
+
+    <TextView
+        android:lineSpacingExtra="10dp"
+        android:text="@string/guide_line"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="Chọn thử chuyển đổi 5 số điện thoại ngẫu nhiên trong danh bạ để kiểm tra độ chính xác của phần mềm"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/button_test"
+        android:text="chọn thử"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/button_back_to_home"
+        android:text="quay lại trang chủ"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">NumberTransfer</string>
+    <string name="guide_line">Rất đơn giản:\n
+        Bước 1: Click lấy tất cả số điện thoại trong danh bạ\n
+        Bước 2: Click chuyển đổi\nBước 3: Đợi quá trình chuyển đổi thành công\n
+        Bước 4: Hoàn tất quá trình chuyển đổi click \"Save\" để lưu danh bạ mới</string>
+    <string name="please_wait">Vui lòng đợi trong giây lát....</string>
+</resources>
