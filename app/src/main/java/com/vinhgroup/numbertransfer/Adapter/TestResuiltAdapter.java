@@ -50,6 +50,7 @@ public class TestResuiltAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder mViewHolder;
+        // comment something
         if (convertView != null){
             mViewHolder = (ViewHolder) convertView.getTag();
         }else {
