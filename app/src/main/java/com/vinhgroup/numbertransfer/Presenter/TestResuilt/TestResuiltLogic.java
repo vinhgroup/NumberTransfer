@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.vinhgroup.numbertransfer.Adapter.TestResuiltAdapter;
 import com.vinhgroup.numbertransfer.Base.TestResuiltBase;
-import com.vinhgroup.numbertransfer.View.TestResuilt.TestResuiltView;
+import com.vinhgroup.numbertransfer.View.Test.TestResuiltView;
 
 /**
  * Created by Vinh on 6/5/2018.

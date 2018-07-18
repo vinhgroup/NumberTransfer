@@ -1,4 +1,4 @@
-package com.vinhgroup.numbertransfer.View.TestResuilt;
+package com.vinhgroup.numbertransfer.View.Test;
 
 import com.vinhgroup.numbertransfer.Adapter.TestResuiltAdapter;
 

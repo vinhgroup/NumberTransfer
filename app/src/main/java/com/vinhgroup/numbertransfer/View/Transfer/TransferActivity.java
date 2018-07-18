@@ -56,7 +56,7 @@ public class TransferActivity extends TransferBase implements TransferView {
 
     @Override
     public void showProgress() {
-        showProgressDialog(getString(R.string.please_wait), this);
+        showProgressDialog(getString(R.string.please_wait), TransferActivity.this);
     }
 
     @Override

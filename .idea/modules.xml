@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NumberTransfer.iml" filepath="$PROJECT_DIR$/NumberTransfer.iml" />
-      <module fileurl="file://D:\Git\NumberTransfer\NumberTransfer.iml" filepath="D:\Git\NumberTransfer\NumberTransfer.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://D:\Git\NumberTransfer\app\app.iml" filepath="D:\Git\NumberTransfer\app\app.iml" />
     </modules>
   </component>
 </project>

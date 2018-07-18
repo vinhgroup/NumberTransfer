@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import com.vinhgroup.numbertransfer.R;
 import com.vinhgroup.numbertransfer.View.Home.MainActivity;
-import com.vinhgroup.numbertransfer.View.TestResuilt.TestResuiltActivity;
+import com.vinhgroup.numbertransfer.View.Test.TestResuiltActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

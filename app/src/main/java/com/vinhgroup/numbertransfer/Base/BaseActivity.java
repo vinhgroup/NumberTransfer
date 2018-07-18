@@ -169,8 +169,6 @@ public class BaseActivity extends AppCompatActivity {
             mProgressDialog = new ProgressDialog(context);
             mProgressDialog.setCanceledOnTouchOutside(false);
             mProgressDialog.setTitle(msg);
-//            mProgressDialog.setIndeterminate(true);
-//            mProgressDialog.setCancelable(true);
             mProgressDialog.show();
         }
 

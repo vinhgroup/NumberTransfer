@@ -8,6 +8,7 @@ import android.widget.Button;
 import com.vinhgroup.numbertransfer.Base.BaseActivity;
 import com.vinhgroup.numbertransfer.R;
 import com.vinhgroup.numbertransfer.View.Guide.GuideActivity;
+import com.vinhgroup.numbertransfer.View.Reverse.Reverse;
 import com.vinhgroup.numbertransfer.View.Transfer.TransferActivity;
 
 import butterknife.BindView;
@@ -39,6 +40,7 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(this, TransferActivity.class));
                 break;
             case R.id.button_return:
+                startActivity(new Intent(this, Reverse.class));
                 break;
             case R.id.button_information:
                 break;

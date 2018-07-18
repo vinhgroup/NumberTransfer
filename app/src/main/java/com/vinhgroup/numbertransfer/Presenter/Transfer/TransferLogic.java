@@ -88,9 +88,15 @@ public class TransferLogic extends TransferBase implements TransferImp {
 
     class ReadContacts extends AsyncTask<String, Void, List<TestResuilt>> {
 
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
         @Override
         protected List<TestResuilt> doInBackground(String... strings) {
-            arrTestResuilt = getNumberPhones(context, 10);
+            arrTestResuilt = getNumberPhones(context, 5);
             return arrTestResuilt;
         }
 

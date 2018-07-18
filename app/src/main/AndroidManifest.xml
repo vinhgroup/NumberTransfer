@@ -13,21 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".View.Home.MainActivity">
-
-        </activity>
-        <activity android:name=".View.Guide.GuideActivity" />
-        <activity android:name=".View.TestResuilt.TestResuiltActivity" />
-        <activity android:name=".View.Transfer.TransferActivity">
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
+        <activity android:name=".View.Guide.GuideActivity" />
+        <activity android:name=".View.Test.TestResuiltActivity" />
+        <activity android:name=".View.Transfer.TransferActivity"></activity>
+        <activity android:name=".View.Reverse.Reverse"></activity>
     </application>
 
 </manifest>

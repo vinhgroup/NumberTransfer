@@ -1,4 +1,4 @@
-package com.vinhgroup.numbertransfer.View.TestResuilt;
+package com.vinhgroup.numbertransfer.View.Test;
 
 import android.content.Intent;
 import android.os.Bundle;
