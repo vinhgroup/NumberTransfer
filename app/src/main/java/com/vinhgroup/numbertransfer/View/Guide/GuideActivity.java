@@ -32,6 +32,7 @@ public class GuideActivity extends AppCompatActivity {
                 break;
             case R.id.button_test:
                 startActivity(new Intent(this, TestResuiltActivity.class));
+                finish();
                 break;
             default:
                 break;
