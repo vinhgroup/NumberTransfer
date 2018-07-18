@@ -1,5 +1,6 @@
 package com.vinhgroup.numbertransfer.View.Home;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -29,15 +30,18 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.exit)
     Button btnExit;
 
+    @SuppressLint("NewApi")
     @Optional
     @OnClick({R.id.button_guide, R.id.button_transfer, R.id.button_return, R.id.button_information, R.id.exit})
     void onClick(View view) {
         switch (view.getId()) {
             case R.id.button_guide:
                 startActivity(new Intent(this, GuideActivity.class));
+                finish();
                 break;
             case R.id.button_transfer:
                 startActivity(new Intent(this, TransferActivity.class));
+                finish();
                 break;
             case R.id.button_return:
                 startActivity(new Intent(this, Reverse.class));
@@ -45,6 +49,7 @@ public class MainActivity extends BaseActivity {
             case R.id.button_information:
                 break;
             case R.id.exit:
+                finishAndRemoveTask();
                 break;
             default:
                 break;
