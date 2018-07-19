@@ -96,7 +96,7 @@ public class TransferLogic extends TransferBase implements TransferImp {
 
         @Override
         protected List<TestResuilt> doInBackground(String... strings) {
-            arrTestResuilt = getNumberPhones(context, 5);
+            arrTestResuilt = getNumberPhones(context, 5, true);
             return arrTestResuilt;
         }
 

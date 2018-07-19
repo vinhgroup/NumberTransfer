@@ -30,7 +30,7 @@ public class ReverseLogic extends BaseActivity implements ReverseImp {
 
         @Override
         protected List<TestResuilt> doInBackground(String... strings) {
-            arrTestResuilt = getNumberPhones(context, 5);
+            arrTestResuilt = getNumberPhones(context, 5, true);
             return arrTestResuilt;
         }
 
