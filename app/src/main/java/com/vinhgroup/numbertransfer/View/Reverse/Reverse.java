@@ -33,6 +33,7 @@ public class Reverse extends ReverseBase implements ReverseView {
                 onBackPressed();
                 break;
             case R.id.button_transfer:
+                mReverseLogic.startReverse();
                 break;
             default:
                 break;

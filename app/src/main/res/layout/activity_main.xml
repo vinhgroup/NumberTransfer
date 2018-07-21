@@ -24,7 +24,7 @@
 
         <Button
             android:id="@+id/button_transfer"
-            android:text="Chuyển đổi 10 số sang 11 số"
+            android:text="Chuyển đổi 11 số sang 10 số"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
