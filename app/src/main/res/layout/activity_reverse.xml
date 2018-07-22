@@ -5,9 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="10dp"
     tools:context="com.vinhgroup.numbertransfer.View.Transfer.TransferActivity">
 
     <ListView
+        android:padding="10dp"
         android:id="@+id/lv"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -22,13 +24,13 @@
             android:text="Chuyển đổi"
             android:id="@+id/button_transfer"
             android:layout_gravity="center"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <Button
             android:text="Về trang chủ"
             android:id="@+id/button_back_to_home"
             android:layout_gravity="center"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
 </LinearLayout>

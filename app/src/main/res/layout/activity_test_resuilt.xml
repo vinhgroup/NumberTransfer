@@ -19,6 +19,7 @@
     </ListView>
 
     <LinearLayout
+        android:padding="10dp"
         android:gravity="center"
         android:orientation="vertical"
         android:layout_weight="1"
@@ -27,17 +28,17 @@
         <Button
             android:id="@+id/button_re_choosen"
             android:text="Chọn lại"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <Button
             android:id="@+id/button_transfer_resuilt"
             android:text="Chuyển đổi"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <Button
             android:id="@+id/button_back_to_home_resuilt"
             android:text="Trang chủ"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
 
