@@ -50,6 +50,7 @@ public class TransferActivity extends TransferBase implements TransferView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer);
         ButterKnife.bind(this);
+        getSupportActionBar().setTitle("Chuyển 11 sang 10");
         mTransferLogic = new TransferLogic(this, this);
         mTransferLogic.getNumberPhones();
 

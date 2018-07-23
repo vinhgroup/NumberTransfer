@@ -45,6 +45,9 @@ public class Reverse extends ReverseBase implements ReverseView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reverse);
         ButterKnife.bind(this);
+        getSupportActionBar().setTitle("Chuyển 10 sang 11");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setIcon(R.drawable.baseline_cached_24);
         mReverseLogic = new ReverseLogic(this, this);
         mReverseLogic.getNumber10();
     }

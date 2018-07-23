@@ -61,5 +61,9 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.baseline_cached_24);
+        getSupportActionBar().setTitle(" Chuyển đổi đầu số");
+
     }
 }

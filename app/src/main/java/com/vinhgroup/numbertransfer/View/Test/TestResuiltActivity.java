@@ -53,8 +53,10 @@ public class TestResuiltActivity extends TestResuiltBase implements TestResuiltV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_resuilt);
         ButterKnife.bind(this);
+        getSupportActionBar().setTitle("Chuyển Thử");
         mTestResuiltLogic = new TestResuiltLogic(this, this);
         mTestResuiltLogic.getPhoneContacts(false);
+
 //        startActivity(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI));
     }
 

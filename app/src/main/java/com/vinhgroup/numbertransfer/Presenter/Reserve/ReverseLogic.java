@@ -33,7 +33,7 @@ public class ReverseLogic extends BaseActivity implements ReverseImp {
     }
 
 
-    class ReadContact10 extends AsyncTask<String, Void, List<TestResuilt>>{
+    class ReadContact10 extends AsyncTask<String, Void, List<TestResuilt>> {
 
         @Override
         protected List<TestResuilt> doInBackground(String... strings) {
@@ -50,28 +50,33 @@ public class ReverseLogic extends BaseActivity implements ReverseImp {
         }
     }
 
-    public void startReverse(){
+    public void startReverse() {
         new ReverseContact().execute();
     }
 
-    class ReverseContact extends AsyncTask<Void, Void, Void>{
+    class ReverseContact extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected Void doInBackground(Void... voids) {
             ReverseHere();
             return null;
         }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            Toast.makeText(context, "Finish", Toast.LENGTH_SHORT).show();
+            super.onPostExecute(aVoid);
+        }
     }
 
-    public void ReverseHere(){
-
-        for (int i = 0; i< arrTestResuilt.size(); i++){
-            if (Integer.parseInt(arrTestResuilt.get(i).getId()) > 0){
-                if (arrTestResuilt.get(i).getEmail()==null){
+    public void ReverseHere() {
+        for (int i = 0; i < arrTestResuilt.size(); i++) {
+            if (Integer.parseInt(arrTestResuilt.get(i).getId()) > 0) {
+                if (arrTestResuilt.get(i).getEmail() == null) {
                     arrTestResuilt.get(i).setEmail("");
                 }
                 updateContact(arrTestResuilt.get(i).getName(), arrTestResuilt.get(i).getNumberPhoneAfterChange(), arrTestResuilt.get(i).getEmail(), arrTestResuilt.get(i).getId());
-            }else {
+            } else {
                 Toast.makeText(context, "cant not doing with this contact", Toast.LENGTH_SHORT).show();
             }
         }

@@ -52,6 +52,7 @@ public class TransferLogic extends TransferBase implements TransferImp {
 
         @Override
         protected void onPostExecute(Void aVoid) {
+            Toast.makeText(context, "Finish", Toast.LENGTH_SHORT).show();
             super.onPostExecute(aVoid);
         }
     }
