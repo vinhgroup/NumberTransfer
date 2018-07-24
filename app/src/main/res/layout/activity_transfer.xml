@@ -8,6 +8,12 @@
     android:padding="10dp"
     tools:context="com.vinhgroup.numbertransfer.View.Transfer.TransferActivity">
 
+    <CheckBox
+        android:id="@+id/check_box_all"
+        android:text="Chọn tất cả"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <ListView
         android:id="@+id/lv"
         android:layout_width="wrap_content"
@@ -15,22 +21,24 @@
         android:layout_weight="2.5"></ListView>
 
     <LinearLayout
-        android:padding="10dp"
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="10dp">
+
         <Button
-            android:text="Chuyển đổi"
             android:id="@+id/button_transfer"
-            android:layout_gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Chuyển đổi" />
+
         <Button
-            android:text="Về trang chủ"
             android:id="@+id/button_back_to_home"
-            android:layout_gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Về trang chủ" />
     </LinearLayout>
 </LinearLayout>

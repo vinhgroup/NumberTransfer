@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
 
 import com.vinhgroup.numbertransfer.Adapter.TestResuiltAdapter;
@@ -24,9 +25,11 @@ public class TransferActivity extends TransferBase implements TransferView {
     Button btnBackToHome;
     @BindView(R.id.lv)
     ListView lv;
+    @BindView(R.id.check_box_all)
+    CheckBox cbAll;
 
     @Optional
-    @OnClick({R.id.button_transfer, R.id.button_back_to_home})
+    @OnClick({R.id.button_transfer, R.id.button_back_to_home, R.id.check_box_all})
     void OnClick(View view){
             switch (view.getId()){
                 case R.id.button_transfer:
@@ -35,6 +38,9 @@ public class TransferActivity extends TransferBase implements TransferView {
                 case R.id.button_back_to_home:
                     startActivity(new Intent(this, MainActivity.class));
                     finish();
+                    break;
+                case R.id.check_box_all:
+                    mTransferLogic.setCheckAll(cbAll.isChecked());
                     break;
             }
     }
@@ -69,5 +75,14 @@ public class TransferActivity extends TransferBase implements TransferView {
     @Override
     public void closeProgress() {
         closeProgressDialog();
+    }
+
+    @Override
+    public void enableAllCheck(boolean isEnableCheckAll) {
+        cbAll.setChecked(isEnableCheckAll);
+    }
+
+    public void selectOne(int position, boolean isCheck) {
+        mTransferLogic.selectOneNumber(position, isCheck);
     }
 }

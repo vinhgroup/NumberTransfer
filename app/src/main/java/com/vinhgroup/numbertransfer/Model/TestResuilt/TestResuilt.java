@@ -5,18 +5,20 @@ package com.vinhgroup.numbertransfer.Model.TestResuilt;
  */
 
 public class TestResuilt {
+    boolean Select;
     String Id;
     String Name;
     String NumberPhone;
     String NumberPhoneAfterChange;
     String Email;
 
-    public TestResuilt(String id, String name, String numberPhone, String numberPhoneAfterChange, String email) {
+    public TestResuilt(String id, String name, String numberPhone, String numberPhoneAfterChange, String email, boolean select) {
         Id = id;
         Name = name;
         NumberPhone = numberPhone;
         NumberPhoneAfterChange = numberPhoneAfterChange;
         Email = email;
+        Select = select;
     }
 
     public String getId() {
@@ -57,5 +59,13 @@ public class TestResuilt {
 
     public void setEmail(String email) {
         Email = email;
+    }
+
+    public boolean isSelect() {
+        return Select;
+    }
+
+    public void setSelect(boolean select) {
+        Select = select;
     }
 }

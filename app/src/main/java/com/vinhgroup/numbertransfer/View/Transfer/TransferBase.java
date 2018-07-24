@@ -1,5 +1,6 @@
 package com.vinhgroup.numbertransfer.View.Transfer;
 
+import com.vinhgroup.numbertransfer.Adapter.TestResuiltAdapter;
 import com.vinhgroup.numbertransfer.Base.BaseActivity;
 import com.vinhgroup.numbertransfer.Presenter.Transfer.TransferLogic;
 
@@ -9,4 +10,5 @@ import com.vinhgroup.numbertransfer.Presenter.Transfer.TransferLogic;
 
 public class TransferBase extends BaseActivity {
     TransferLogic mTransferLogic;
+    public TestResuiltAdapter adapter;
 }

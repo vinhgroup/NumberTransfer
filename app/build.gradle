@@ -29,6 +29,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.intuit.sdp:sdp-android:1.0.5'
+    implementation 'cc.cloudist.acplibrary:library:1.2.1'
     testImplementation 'junit:junit:4.12'
     implementation 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'

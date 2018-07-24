@@ -36,6 +36,27 @@ public class TransferLogic extends TransferBase implements TransferImp {
         new ReadContacts().execute();
     }
 
+    @Override
+    public void setCheckAll(boolean checked) {
+        for (int i = 0; i < arrTestResuilt.size(); i++) {
+            arrTestResuilt.get(i).setSelect(checked);
+        }
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void selectOneNumber(int position, boolean isCheck) {
+        boolean isEnableCheckAll = true;
+        arrTestResuilt.get(position).setSelect(isCheck);
+        for (int i = 0; i < arrTestResuilt.size(); i++) {
+            if (!arrTestResuilt.get(i).isSelect()) {
+                isEnableCheckAll = false;
+                break;
+            }
+        }
+        mTransferView.enableAllCheck(isEnableCheckAll);
+    }
+
     public void startTransfer() {
         new TransferContact().execute();
     }
@@ -59,14 +80,16 @@ public class TransferLogic extends TransferBase implements TransferImp {
 
 
     public void TranferHere() {
-        for (int i = 0; i< arrTestResuilt.size(); i++){
-            if (Integer.parseInt(arrTestResuilt.get(i).getId()) > 0){
-                if (arrTestResuilt.get(i).getEmail()==null){
-                    arrTestResuilt.get(i).setEmail("");
+        for (int i = 0; i < arrTestResuilt.size(); i++) {
+            if (arrTestResuilt.get(i).isSelect()) {
+                if (Integer.parseInt(arrTestResuilt.get(i).getId()) > 0) {
+                    if (arrTestResuilt.get(i).getEmail() == null) {
+                        arrTestResuilt.get(i).setEmail("");
+                    }
+                    updateContact(arrTestResuilt.get(i).getName(), arrTestResuilt.get(i).getNumberPhoneAfterChange(), arrTestResuilt.get(i).getEmail(), arrTestResuilt.get(i).getId());
+                } else {
+                    Toast.makeText(context, "cant not doing with this contact", Toast.LENGTH_SHORT).show();
                 }
-                updateContact(arrTestResuilt.get(i).getName(), arrTestResuilt.get(i).getNumberPhoneAfterChange(), arrTestResuilt.get(i).getEmail(), arrTestResuilt.get(i).getId());
-            }else {
-                Toast.makeText(context, "cant not doing with this contact", Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -103,7 +126,7 @@ public class TransferLogic extends TransferBase implements TransferImp {
 
         @Override
         protected void onPostExecute(List<TestResuilt> testResuilts) {
-            TestResuiltAdapter adapter = new TestResuiltAdapter(context, arrTestResuilt, true);
+            adapter = new TestResuiltAdapter(context, arrTestResuilt, true);
             mTransferView.setListAdapter(adapter);
             mTransferView.closeProgress();
             super.onPostExecute(testResuilts);

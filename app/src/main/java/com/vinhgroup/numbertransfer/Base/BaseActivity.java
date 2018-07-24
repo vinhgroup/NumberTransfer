@@ -52,12 +52,17 @@ public class BaseActivity extends AppCompatActivity {
                         if (isTen) {
                             if (isTenBeforeChange(phoneNumber)) {
                                 String LastPart = phoneNumber.substring(3, phoneNumber.length());
-                                arrTestResuilt.add(new TestResuilt(id, name, phoneNumber, getFirstPartTransferEleven(phoneNumber) + LastPart, email));
+                                arrTestResuilt.add(new TestResuilt( id,
+                                        name,
+                                        phoneNumber,
+                                        getFirstPartTransferEleven(phoneNumber) + LastPart,
+                                        email,
+                                        false));
                             }
                         } else {
                             if (isElevenBeforeChange(phoneNumber)) {
                                 String LastPart = phoneNumber.substring(4, phoneNumber.length());
-                                arrTestResuilt.add(new TestResuilt(id, name, phoneNumber, getFirstPartTransferTen(phoneNumber) + LastPart, email));
+                                arrTestResuilt.add(new TestResuilt(id, name, phoneNumber, getFirstPartTransferTen(phoneNumber) + LastPart, email, false));
                             }
                         }
 

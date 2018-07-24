@@ -6,4 +6,8 @@ package com.vinhgroup.numbertransfer.Presenter.Transfer;
 
 public interface TransferImp {
     void getNumberPhones();
+
+    void setCheckAll(boolean checked);
+
+    void selectOneNumber(int position, boolean isCheck);
 }

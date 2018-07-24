@@ -12,4 +12,6 @@ public interface TransferView {
     void showProgress();
 
     void closeProgress();
+
+    void enableAllCheck(boolean isEnableCheckAll);
 }
