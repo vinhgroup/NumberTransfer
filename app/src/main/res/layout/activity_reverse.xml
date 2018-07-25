@@ -8,6 +8,13 @@
     android:padding="10dp"
     tools:context="com.vinhgroup.numbertransfer.View.Transfer.TransferActivity">
 
+
+    <CheckBox
+        android:id="@+id/check_box_all_reverse"
+        android:text="Chọn tất cả"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <ListView
         android:padding="10dp"
         android:id="@+id/lv"

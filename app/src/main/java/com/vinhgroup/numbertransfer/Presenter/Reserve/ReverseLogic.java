@@ -20,10 +20,12 @@ import java.util.regex.Pattern;
 public class ReverseLogic extends BaseActivity implements ReverseImp {
     Context context;
     ReverseView mReverseView;
+    TestResuiltAdapter adapter = new TestResuiltAdapter(context, arrTestResuilt, true);
 
     public ReverseLogic(Context context, ReverseView mReverseView) {
         this.context = context;
         this.mReverseView = mReverseView;
+
     }
 
     @Override
@@ -32,6 +34,25 @@ public class ReverseLogic extends BaseActivity implements ReverseImp {
         new ReadContact10().execute();
     }
 
+    public void setCheckAll(boolean checked) {
+        for (int i = 0; i < arrTestResuilt.size(); i++) {
+            arrTestResuilt.get(i).setSelect(checked);
+        }
+        adapter.notifyDataSetChanged();
+    }
+
+
+    public void selectOneNumber(int position, boolean isCheck) {
+        boolean isEnableCheckAll = true;
+        arrTestResuilt.get(position).setSelect(isCheck);
+        for (int i = 0; i < arrTestResuilt.size(); i++) {
+            if (!arrTestResuilt.get(i).isSelect()) {
+                isEnableCheckAll = false;
+                break;
+            }
+        }
+        mReverseView.enableAllCheck(isEnableCheckAll);
+    }
 
     class ReadContact10 extends AsyncTask<String, Void, List<TestResuilt>> {
 
@@ -43,7 +64,7 @@ public class ReverseLogic extends BaseActivity implements ReverseImp {
 
         @Override
         protected void onPostExecute(List<TestResuilt> testResuilts) {
-            TestResuiltAdapter adapter = new TestResuiltAdapter(context, arrTestResuilt, true);
+            adapter = new TestResuiltAdapter(context, arrTestResuilt, true);
             mReverseView.setListAdapter(adapter);
             mReverseView.closeProgress();
             super.onPostExecute(testResuilts);

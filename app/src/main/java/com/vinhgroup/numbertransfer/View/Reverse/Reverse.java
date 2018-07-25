@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
 
 import com.vinhgroup.numbertransfer.Adapter.TestResuiltAdapter;
@@ -24,9 +25,12 @@ public class Reverse extends ReverseBase implements ReverseView {
     Button btnBacktoHome;
     @BindView(R.id.button_transfer)
     Button btnTransfer;
+    @BindView(R.id.check_box_all_reverse)
+    CheckBox btnCheckAll;
+
 
     @Optional
-    @OnClick({R.id.button_back_to_home, R.id.button_transfer})
+    @OnClick({R.id.button_back_to_home, R.id.button_transfer, R.id.check_box_all_reverse})
     void OnClick(View view) {
         switch (view.getId()) {
             case R.id.button_back_to_home:
@@ -34,6 +38,9 @@ public class Reverse extends ReverseBase implements ReverseView {
                 break;
             case R.id.button_transfer:
                 mReverseLogic.startReverse();
+                break;
+            case  R.id.check_box_all_reverse:
+                mReverseLogic.setCheckAll(btnCheckAll.isChecked());
                 break;
             default:
                 break;
@@ -66,4 +73,15 @@ public class Reverse extends ReverseBase implements ReverseView {
     public void setListAdapter(TestResuiltAdapter adapter) {
         lv.setAdapter(adapter);
     }
+
+
+    public void enableAllCheck(boolean isEnableCheckAll) {
+        btnCheckAll.setChecked(isEnableCheckAll);
+    }
+
+    // e chua chinh dc cho nay :D
+    public void selectOne(int position, boolean isCheck) {
+        mReverseLogic.selectOneNumber(position, isCheck);
+    }
+
 }

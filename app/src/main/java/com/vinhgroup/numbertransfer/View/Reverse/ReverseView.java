@@ -8,4 +8,6 @@ public interface ReverseView {
     void showProgress();
 
     void setListAdapter(TestResuiltAdapter adapter);
+
+    void enableAllCheck(boolean isEnableCheckAll);
 }
