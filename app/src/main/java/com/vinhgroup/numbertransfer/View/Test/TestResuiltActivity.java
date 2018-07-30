@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
 
 import com.vinhgroup.numbertransfer.Adapter.TestResuiltAdapter;
@@ -28,6 +29,7 @@ public class TestResuiltActivity extends TestResuiltBase implements TestResuiltV
     @BindView(R.id.lv)
     ListView lv;
 
+
     @Optional
     @OnClick({R.id.button_re_choosen, R.id.button_transfer_resuilt, R.id.button_back_to_home_resuilt})
     void OnClick(View view) {
@@ -42,6 +44,7 @@ public class TestResuiltActivity extends TestResuiltBase implements TestResuiltV
                 startActivity(new Intent(this, MainActivity.class));
                 finish();
                 break;
+
             default:
                 break;
         }
@@ -64,6 +67,10 @@ public class TestResuiltActivity extends TestResuiltBase implements TestResuiltV
     public void setListAdapter(TestResuiltAdapter adapter) {
         lv.setAdapter(adapter);
     }
+
+
+
+
 
 
 //    @Override

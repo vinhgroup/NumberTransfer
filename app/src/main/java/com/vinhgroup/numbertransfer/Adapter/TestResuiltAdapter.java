@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.vinhgroup.numbertransfer.Model.TestResuilt.TestResuilt;
 import com.vinhgroup.numbertransfer.R;
+import com.vinhgroup.numbertransfer.View.Reverse.Reverse;
+import com.vinhgroup.numbertransfer.View.Test.TestResuiltActivity;
 import com.vinhgroup.numbertransfer.View.Transfer.TransferActivity;
 
 import java.util.List;
@@ -70,6 +72,9 @@ public class TestResuiltAdapter extends BaseAdapter {
         mViewHolder.tvNewPhoneNumber.setVisibility(isTransfer ? View.VISIBLE : View.GONE);
         mViewHolder.cbSelect.setChecked(object.get(position).isSelect());
         mViewHolder.cbSelect.setTag(position);
+        Activity activity = (Activity) context;
+        if (activity instanceof TestResuiltActivity)
+            mViewHolder.cbSelect.setVisibility(View.GONE);
         return convertView;
     }
 
@@ -100,6 +105,9 @@ public class TestResuiltAdapter extends BaseAdapter {
                     Activity activity = (Activity) context;
                     if (activity instanceof TransferActivity) {
                         ((TransferActivity) mContext).selectOne(position, cbSelect.isChecked());
+                    }
+                    if (activity instanceof Reverse) {
+                        ((Reverse) mContext).selectOne(position, cbSelect.isChecked());
                     }
                     break;
             }

@@ -6,4 +6,6 @@ package com.vinhgroup.numbertransfer.Presenter.TestResuilt;
 
 public interface TestResuiltImp {
     void getPhoneContacts(boolean isTransfer);
+
+
 }

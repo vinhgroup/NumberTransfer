@@ -8,4 +8,6 @@ import com.vinhgroup.numbertransfer.Adapter.TestResuiltAdapter;
 
 public interface TestResuiltView {
     void setListAdapter(TestResuiltAdapter adapter);
+
+
 }
