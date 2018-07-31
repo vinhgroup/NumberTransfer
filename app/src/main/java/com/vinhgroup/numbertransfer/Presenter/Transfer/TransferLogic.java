@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.vinhgroup.numbertransfer.Adapter.TestResuiltAdapter;
 import com.vinhgroup.numbertransfer.Model.TestResuilt.TestResuilt;
+import com.vinhgroup.numbertransfer.R;
 import com.vinhgroup.numbertransfer.View.Transfer.TransferBase;
 import com.vinhgroup.numbertransfer.View.Transfer.TransferView;
 
@@ -58,42 +59,63 @@ public class TransferLogic extends TransferBase implements TransferImp {
     }
 
     public void startTransfer() {
+        showProgessUpdate(context.getString(R.string.please_do_not_turn_off_application), context, arrTestResuilt.size());
         new TransferContact().execute();
     }
 
 
-    class TransferContact extends AsyncTask<Void, Void, Void> {
+    class TransferContact extends AsyncTask<Void, Integer, Void> {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            TranferHere();
+//            TranferHere();
+            for (int i = 0; i < arrTestResuilt.size(); i++) {
+                if (arrTestResuilt.get(i).isSelect()) {
+                    if (Integer.parseInt(arrTestResuilt.get(i).getId()) > 0) {
+                        if (arrTestResuilt.get(i).getEmail() == null) {
+                            arrTestResuilt.get(i).setEmail("");
+                        }
+                        updateContact(arrTestResuilt.get(i).getName(), arrTestResuilt.get(i).getNumberPhoneAfterChange(), arrTestResuilt.get(i).getEmail(), arrTestResuilt.get(i).getId());
+                        publishProgress(i + 1);
+                    } else {
+                        Toast.makeText(context, "cant not doing with this contact", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
             return null;
         }
 
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            Toast.makeText(context, "Finish", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, context.getString(R.string.completed), Toast.LENGTH_SHORT).show();
+            mProgressDialog.dismiss();
             super.onPostExecute(aVoid);
         }
-    }
 
-
-    public void TranferHere() {
-        for (int i = 0; i < arrTestResuilt.size(); i++) {
-            if (arrTestResuilt.get(i).isSelect()) {
-                if (Integer.parseInt(arrTestResuilt.get(i).getId()) > 0) {
-                    if (arrTestResuilt.get(i).getEmail() == null) {
-                        arrTestResuilt.get(i).setEmail("");
-                    }
-                    updateContact(arrTestResuilt.get(i).getName(), arrTestResuilt.get(i).getNumberPhoneAfterChange(), arrTestResuilt.get(i).getEmail(), arrTestResuilt.get(i).getId());
-                } else {
-                    Toast.makeText(context, "cant not doing with this contact", Toast.LENGTH_SHORT).show();
-                }
-            }
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            mProgressDialog.setProgress(values[0]);
+            super.onProgressUpdate(values);
         }
-
     }
+
+
+//    public void TranferHere() {
+//        for (int i = 0; i < arrTestResuilt.size(); i++) {
+//            if (arrTestResuilt.get(i).isSelect()) {
+//                if (Integer.parseInt(arrTestResuilt.get(i).getId()) > 0) {
+//                    if (arrTestResuilt.get(i).getEmail() == null) {
+//                        arrTestResuilt.get(i).setEmail("");
+//                    }
+//                    updateContact(arrTestResuilt.get(i).getName(), arrTestResuilt.get(i).getNumberPhoneAfterChange(), arrTestResuilt.get(i).getEmail(), arrTestResuilt.get(i).getId());
+//                } else {
+//                    Toast.makeText(context, "cant not doing with this contact", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        }
+//
+//    }
 
 //    private void TranferHere() {
 //        for (int i = 0; i< arrTestResuilt.size(); i++){
@@ -120,7 +142,7 @@ public class TransferLogic extends TransferBase implements TransferImp {
 
         @Override
         protected List<TestResuilt> doInBackground(String... strings) {
-            arrTestResuilt = getNumberPhones(context, 5, false);
+            arrTestResuilt = getNumberPhones(context, numberUneed, false);
             return arrTestResuilt;
         }
 

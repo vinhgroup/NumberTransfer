@@ -22,6 +22,8 @@ import java.util.List;
 public class BaseActivity extends AppCompatActivity {
 
 
+    public static int numberUneed = 100;
+
     public List<TestResuilt> arrTestResuilt;
 
     public List<TestResuilt> getNumberPhones(Context context, int numberUneed, boolean isTen) {
@@ -330,7 +332,7 @@ public class BaseActivity extends AppCompatActivity {
     /*
      Progress dialog for all activity
 */
-    private ProgressDialog mProgressDialog;
+    public ProgressDialog mProgressDialog;
 
     public void showProgressDialog(String msg, Context context) {
         if (mProgressDialog == null) {
@@ -351,6 +353,16 @@ public class BaseActivity extends AppCompatActivity {
             mProgressDialog.dismiss();
             mProgressDialog = null;
         }
+    }
+
+    public void showProgessUpdate(String s, Context context, int size){
+        mProgressDialog  = new ProgressDialog(context);
+        mProgressDialog.setMessage(s);
+        mProgressDialog.setIndeterminate(false);
+        mProgressDialog.setCanceledOnTouchOutside(false);
+        mProgressDialog.setMax(size);
+        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        mProgressDialog.show();
     }
 
 }
