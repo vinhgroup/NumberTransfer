@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.vinhgroup.numbertransfer.Base.BaseActivity;
 import com.vinhgroup.numbertransfer.R;
 import com.vinhgroup.numbertransfer.View.Home.MainActivity;
 import com.vinhgroup.numbertransfer.View.Test.TestResuiltActivity;
@@ -15,7 +16,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Optional;
 
-public class GuideActivity extends AppCompatActivity {
+public class GuideActivity extends BaseActivity {
 
     @BindView(R.id.button_back_to_home)
     Button btnBackHome;
@@ -27,12 +28,10 @@ public class GuideActivity extends AppCompatActivity {
     void OnClick(View view) {
         switch (view.getId()) {
             case R.id.button_back_to_home:
-                startActivity(new Intent(this, MainActivity.class));
-                finish();
+                onBackPressed();
                 break;
             case R.id.button_test:
                 startActivity(new Intent(this, TestResuiltActivity.class));
-                finish();
                 break;
             default:
                 break;

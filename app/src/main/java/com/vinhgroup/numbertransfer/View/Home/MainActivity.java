@@ -3,6 +3,7 @@ package com.vinhgroup.numbertransfer.View.Home;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
@@ -17,7 +18,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Optional;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.button_guide)
     Button btnGuide;
@@ -37,11 +38,9 @@ public class MainActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.button_guide:
                 startActivity(new Intent(this, GuideActivity.class));
-                finish();
                 break;
             case R.id.button_transfer:
                 startActivity(new Intent(this, TransferActivity.class));
-                finish();
                 break;
             case R.id.button_return:
                 startActivity(new Intent(this, Reverse.class));

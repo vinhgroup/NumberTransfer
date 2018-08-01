@@ -41,10 +41,8 @@ public class TestResuiltActivity extends TestResuiltBase implements TestResuiltV
                 mTestResuiltLogic.getPhoneContacts(true);
                 break;
             case R.id.button_back_to_home_resuilt:
-                startActivity(new Intent(this, MainActivity.class));
-                finish();
+                onBackPressed();
                 break;
-
             default:
                 break;
         }

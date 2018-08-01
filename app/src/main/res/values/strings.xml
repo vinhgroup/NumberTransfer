@@ -7,4 +7,5 @@
     <string name="please_wait">Vui lòng đợi trong giây lát....</string>
     <string name="please_do_not_turn_off_application">Vui lòng không tắt ứng dụng. Trước khi quá trình hoàn tất...</string>
     <string name="completed">Hoàn tất chuyển đổi</string>
+    <string name="loading_please_wait">Đang tải dữ liệu, vui lòng đợi giây lát ...</string>
 </resources>

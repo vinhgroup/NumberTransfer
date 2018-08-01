@@ -53,7 +53,6 @@ public class Reverse extends ReverseBase implements ReverseView {
         setContentView(R.layout.activity_reverse);
         ButterKnife.bind(this);
         getSupportActionBar().setTitle("Chuyển 10 sang 11");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //        getSupportActionBar().setIcon(R.drawable.baseline_cached_24);
         mReverseLogic = new ReverseLogic(this, this);
         mReverseLogic.getNumber10();
@@ -66,7 +65,7 @@ public class Reverse extends ReverseBase implements ReverseView {
 
     @Override
     public void showProgress() {
-        showProgressDialog("Please wait", this);
+        showProgressDialog(getString(R.string.loading_please_wait), this);
     }
 
     @Override

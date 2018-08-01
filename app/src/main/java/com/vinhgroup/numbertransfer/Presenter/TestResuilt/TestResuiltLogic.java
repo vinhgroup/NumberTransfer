@@ -22,7 +22,7 @@ public class TestResuiltLogic extends TestResuiltBase implements TestResuiltImp 
 
     @Override
     public void getPhoneContacts(boolean isTransfer) {
-        arrTestResuilt = getNumberPhones(context, numberUneed, false);
+        arrTestResuilt = getNumberPhones(context, 5, false);
         testResuiltAdapter = new TestResuiltAdapter(context, arrTestResuilt, isTransfer);
         mTestResuiltView.setListAdapter(testResuiltAdapter);
     }

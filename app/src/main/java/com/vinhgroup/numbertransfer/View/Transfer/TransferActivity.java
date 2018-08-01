@@ -30,19 +30,18 @@ public class TransferActivity extends TransferBase implements TransferView {
 
     @Optional
     @OnClick({R.id.button_transfer, R.id.button_back_to_home, R.id.check_box_all})
-    void OnClick(View view){
-            switch (view.getId()){
-                case R.id.button_transfer:
-                    mTransferLogic.startTransfer();
-                    break;
-                case R.id.button_back_to_home:
-                    startActivity(new Intent(this, MainActivity.class));
-                    finish();
-                    break;
-                case R.id.check_box_all:
-                    mTransferLogic.setCheckAll(cbAll.isChecked());
-                    break;
-            }
+    void OnClick(View view) {
+        switch (view.getId()) {
+            case R.id.button_transfer:
+                mTransferLogic.startTransfer();
+                break;
+            case R.id.button_back_to_home:
+                onBackPressed();
+                break;
+            case R.id.check_box_all:
+                mTransferLogic.setCheckAll(cbAll.isChecked());
+                break;
+        }
     }
 
     @Override
@@ -51,6 +50,7 @@ public class TransferActivity extends TransferBase implements TransferView {
         finish();
         //super.onBackPressed();
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +69,7 @@ public class TransferActivity extends TransferBase implements TransferView {
 
     @Override
     public void showProgress() {
-        showProgressDialog(getString(R.string.please_wait), TransferActivity.this);
+        showProgressDialog(getString(R.string.loading_please_wait), TransferActivity.this);
     }
 
     @Override

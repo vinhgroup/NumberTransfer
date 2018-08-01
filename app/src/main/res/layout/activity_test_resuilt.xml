@@ -37,7 +37,7 @@
             android:layout_height="wrap_content" />
         <Button
             android:id="@+id/button_back_to_home_resuilt"
-            android:text="Trang chủ"
+            android:text="Trở lại"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>

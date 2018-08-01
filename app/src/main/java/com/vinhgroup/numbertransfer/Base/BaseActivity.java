@@ -9,6 +9,7 @@ import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 
 import com.vinhgroup.numbertransfer.Model.TestResuilt.TestResuilt;
 
@@ -86,7 +87,18 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        initActionbar();
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private boolean isElevenBeforeChange(String phoneNumber) {
@@ -338,7 +350,9 @@ public class BaseActivity extends AppCompatActivity {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(context);
             mProgressDialog.setCanceledOnTouchOutside(false);
-            mProgressDialog.setTitle(msg);
+            mProgressDialog.setIndeterminate(true);
+            mProgressDialog.setTitle(null);
+            mProgressDialog.setMessage(msg);
             mProgressDialog.show();
         }
 
@@ -363,6 +377,14 @@ public class BaseActivity extends AppCompatActivity {
         mProgressDialog.setMax(size);
         mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         mProgressDialog.show();
+    }
+
+
+
+    public void initActionbar(){
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
     }
 
 }
