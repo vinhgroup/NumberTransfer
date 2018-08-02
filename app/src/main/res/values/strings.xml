@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">NumberTransfer</string>
     <string name="guide_line">Rất đơn giản:\n
-        Bước 1: Click lấy tất cả số điện thoại trong danh bạ\n
-        Bước 2: Click chuyển đổi\nBước 3: Đợi quá trình chuyển đổi thành công\n
-        Bước 4: Hoàn tất quá trình chuyển đổi click \"Save\" để lưu danh bạ mới</string>
+        Bước 1: Nhấn nút chọn tất cả số điện thoại trong danh bạ để thực hiện chuyển đổi, hoặc bạn có thể chọn một vài số tùy ý để bắt đầu chuyển đổi.\n
+        Bước 2: Nhấn nút chuyển đổi.\n
+        Bước 3: Đợi quá trình chuyển đổi thành công.\n
+        Bước 4: Hoàn tất quá trình chuyển đổi và chương trình sẽ tự động lưu danh bạ mới cho các bạn</string>
     <string name="please_wait">Vui lòng đợi trong giây lát....</string>
     <string name="please_do_not_turn_off_application">Vui lòng không tắt ứng dụng. Trước khi quá trình hoàn tất...</string>
     <string name="completed">Hoàn tất chuyển đổi</string>

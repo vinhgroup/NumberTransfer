@@ -37,6 +37,7 @@ public class TransferActivity extends TransferBase implements TransferView {
                 break;
             case R.id.button_back_to_home:
                 onBackPressed();
+                finish();
                 break;
             case R.id.check_box_all:
                 mTransferLogic.setCheckAll(cbAll.isChecked());

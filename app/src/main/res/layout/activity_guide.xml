@@ -28,6 +28,7 @@
 
 
     <TextView
+        android:visibility="gone"
         android:layout_marginTop="30dp"
         android:text="Chọn thử chuyển đổi 5 số điện thoại ngẫu nhiên trong danh bạ để kiểm tra độ chính xác của phần mềm"
         android:layout_gravity="center"
@@ -35,6 +36,7 @@
         android:layout_height="wrap_content" />
 
     <Button
+        android:visibility="gone"
         android:id="@+id/button_test"
         android:text="chọn thử"
         android:layout_gravity="center"

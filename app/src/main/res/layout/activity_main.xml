@@ -35,6 +35,7 @@
             android:layout_height="wrap_content" />
 
         <Button
+            android:visibility="gone"
             android:id="@+id/button_information"
             android:text="Thông tin chuyển đổi"
             android:layout_width="match_parent"

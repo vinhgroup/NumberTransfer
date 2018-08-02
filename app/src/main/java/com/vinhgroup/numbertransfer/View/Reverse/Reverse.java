@@ -1,5 +1,6 @@
 package com.vinhgroup.numbertransfer.View.Reverse;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import com.vinhgroup.numbertransfer.Adapter.TestResuiltAdapter;
 import com.vinhgroup.numbertransfer.Base.BaseActivity;
 import com.vinhgroup.numbertransfer.Presenter.Reserve.ReverseLogic;
 import com.vinhgroup.numbertransfer.R;
+import com.vinhgroup.numbertransfer.View.Home.MainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -45,6 +47,13 @@ public class Reverse extends ReverseBase implements ReverseView {
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
+        //super.onBackPressed();
     }
 
     @Override

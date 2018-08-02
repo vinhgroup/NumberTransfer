@@ -38,12 +38,15 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.button_guide:
                 startActivity(new Intent(this, GuideActivity.class));
+                finish();
                 break;
             case R.id.button_transfer:
                 startActivity(new Intent(this, TransferActivity.class));
+                finish();
                 break;
             case R.id.button_return:
                 startActivity(new Intent(this, Reverse.class));
+                finish();
                 break;
             case R.id.button_information:
                 break;
