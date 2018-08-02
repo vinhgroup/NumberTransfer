@@ -68,6 +68,9 @@ public class ReverseLogic extends BaseActivity implements ReverseImp {
             adapter = new TestResuiltAdapter(context, arrTestResuilt, true);
             mReverseView.setListAdapter(adapter);
             mReverseView.closeProgress();
+            if (arrTestResuilt.size()==0){
+                showDialogInform(context.getString(R.string.cant_see_any_number), context);
+            }
             super.onPostExecute(testResuilts);
         }
     }

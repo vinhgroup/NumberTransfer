@@ -8,4 +8,5 @@
     <string name="please_do_not_turn_off_application">Vui lòng không tắt ứng dụng. Trước khi quá trình hoàn tất...</string>
     <string name="completed">Hoàn tất chuyển đổi</string>
     <string name="loading_please_wait">Đang tải dữ liệu, vui lòng đợi giây lát ...</string>
+    <string name="cant_see_any_number">Không tìm thấy bất cứ số liên lạc cần thay đổi, vui lòng trở lại...</string>
 </resources>

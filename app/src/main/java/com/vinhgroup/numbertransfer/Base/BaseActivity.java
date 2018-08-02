@@ -1,8 +1,10 @@
 package com.vinhgroup.numbertransfer.Base;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -10,6 +12,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.vinhgroup.numbertransfer.Model.TestResuilt.TestResuilt;
 
@@ -23,7 +26,7 @@ import java.util.List;
 public class BaseActivity extends AppCompatActivity {
 
 
-    public static int numberUneed = 100;
+    public static int numberUneed = 5;
 
     public List<TestResuilt> arrTestResuilt;
 
@@ -82,6 +85,37 @@ public class BaseActivity extends AppCompatActivity {
             }
         }
         return arrTestResuilt;
+    }
+
+    public void showDialogInform(String msg, final Context context){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                context);
+
+        // set title
+        alertDialogBuilder.setTitle("Thông báo");
+
+        // set dialog message
+        alertDialogBuilder
+                .setMessage(msg)
+                .setCancelable(false)
+                .setPositiveButton("OK",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                    }
+                });
+//                .setNegativeButton("CANCEL",new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int id) {
+//                        Toast.makeText(context, "CANCEL button click ", Toast.LENGTH_SHORT).show();
+//
+//                        dialog.cancel();
+//                    }
+//                });
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+
     }
 
 

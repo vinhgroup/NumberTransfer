@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.vinhgroup.numbertransfer.Adapter.TestResuiltAdapter;
 import com.vinhgroup.numbertransfer.Base.TestResuiltBase;
+import com.vinhgroup.numbertransfer.R;
 import com.vinhgroup.numbertransfer.View.Test.TestResuiltView;
 
 /**
@@ -25,6 +26,9 @@ public class TestResuiltLogic extends TestResuiltBase implements TestResuiltImp 
         arrTestResuilt = getNumberPhones(context, 5, false);
         testResuiltAdapter = new TestResuiltAdapter(context, arrTestResuilt, isTransfer);
         mTestResuiltView.setListAdapter(testResuiltAdapter);
+        if (arrTestResuilt.size()==0){
+            showDialogInform(context.getString(R.string.cant_see_any_number), context);
+        }
     }
 
 

@@ -151,6 +151,9 @@ public class TransferLogic extends TransferBase implements TransferImp {
             adapter = new TestResuiltAdapter(context, arrTestResuilt, true);
             mTransferView.setListAdapter(adapter);
             mTransferView.closeProgress();
+            if (arrTestResuilt.size()==0){
+                showDialogInform(context.getString(R.string.cant_see_any_number), context);
+            }
             super.onPostExecute(testResuilts);
         }
     }
