@@ -215,7 +215,7 @@ public class BaseActivity extends AppCompatActivity {
                 FirstPart = "0128";
                 break;
             //                            0123, 0124, 0125, 0127, 0129
-//                                083, 084, 085, 081, 082
+            //                                083, 084, 085, 081, 082
             case "083":
                 FirstPart = "0123";
                 break;
@@ -298,7 +298,7 @@ public class BaseActivity extends AppCompatActivity {
         String FirstPart = phoneNumber.substring(0, 4);
         switch (FirstPart) {
             //                            0162, 0163, 0164,0165, 0166, 0167, 0168,0169
-//                                032, 033, 034, 035, 036, 037, 038, 039
+            //                                032, 033, 034, 035, 036, 037, 038, 039
             case "0162":
                 FirstPart = "032";
                 break;

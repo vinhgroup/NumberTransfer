@@ -59,6 +59,10 @@ public class TransferLogic extends TransferBase implements TransferImp {
     }
 
     public void startTransfer() {
+        if(arrTestResuilt.size()==0){
+            Toast.makeText(context, "Không có số điện thoại nào để chuyển.", Toast.LENGTH_SHORT).show();
+            return;
+        }
         showProgessUpdate(context.getString(R.string.please_do_not_turn_off_application), context, arrTestResuilt.size());
         new TransferContact().execute();
     }
