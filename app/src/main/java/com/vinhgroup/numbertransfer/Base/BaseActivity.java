@@ -413,7 +413,13 @@ public class BaseActivity extends AppCompatActivity {
         mProgressDialog.show();
     }
 
-
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        if ( mProgressDialog!=null && mProgressDialog.isShowing() ){
+            mProgressDialog.cancel();
+        }
+    }
 
     public void initActionbar(){
         getSupportActionBar().setDisplayShowHomeEnabled(true);
