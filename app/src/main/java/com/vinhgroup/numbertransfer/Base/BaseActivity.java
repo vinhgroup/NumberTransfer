@@ -1,14 +1,20 @@
 package com.vinhgroup.numbertransfer.Base;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
@@ -23,99 +29,114 @@ import java.util.List;
  * Created by Vinh on 6/4/2018.
  */
 
-public class BaseActivity extends AppCompatActivity {
-
-
-    public static int numberUneed = 5;
-
-    public List<TestResuilt> arrTestResuilt;
+public class BaseActivity extends SumBase {
 
     public List<TestResuilt> getNumberPhones(Context context, int numberUneed, boolean isTen) {
-        List<TestResuilt> arrTestResuilt = new ArrayList<>();
-        boolean isStop = false;
-        ContentResolver cr = context.getContentResolver();
-        Cursor cur = cr.query(ContactsContract.Contacts.CONTENT_URI, null,
-                null, null, null);
-        if (cur.getCount() > 0) {
-            while (cur.moveToNext()) {
-                String id = cur.getString(cur.getColumnIndex(ContactsContract.Contacts._ID));
-                String name = cur.getString(cur.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-                Integer hasPhone = cur.getInt(cur.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
-                Log.i("Names", name);
-                String email = null;
-                Cursor ce = cr.query(ContactsContract.CommonDataKinds.Email.CONTENT_URI, null,
-                        ContactsContract.CommonDataKinds.Email.CONTACT_ID + " = ?", new String[]{id}, null);
-                if (ce != null && ce.moveToFirst()) {
-                    email = ce.getString(ce.getColumnIndex(ContactsContract.CommonDataKinds.Email.DATA));
-                    ce.close();
-                }
-                if (Integer.parseInt(cur.getString(cur.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))) > 0) {
-                    // Query phone here. Covered next
-                    Cursor phones = context.getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id, null, null);
-                    while (phones.moveToNext()) {
-                        String phoneNumber = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)).replace(" ", "");
-//                        Log.i("Number", phoneNumber +  email);
-                        if (isTen) {
-                            if (isTenBeforeChange(phoneNumber)) {
-                                String LastPart = phoneNumber.substring(3, phoneNumber.length());
-                                arrTestResuilt.add(new TestResuilt( id,
-                                        name,
-                                        phoneNumber,
-                                        getFirstPartTransferEleven(phoneNumber) + LastPart,
-                                        email,
-                                        false));
-                            }
-                        } else {
-                            if (isElevenBeforeChange(phoneNumber)) {
-                                String LastPart = phoneNumber.substring(4, phoneNumber.length());
-                                arrTestResuilt.add(new TestResuilt(id, name, phoneNumber, getFirstPartTransferTen(phoneNumber) + LastPart, email, false));
-                            }
-                        }
-
-                        if (numberUneed != 0 && arrTestResuilt.size() == numberUneed) {
-                            isStop = true;
-                            break;
-                        }
+        List<TestResuilt> arrTestResuiltLocal = new ArrayList<>();
+        try {
+            boolean isStop = false;
+            ContentResolver cr = context.getContentResolver();
+            Cursor cur = cr.query(ContactsContract.Contacts.CONTENT_URI, null,
+                    null, null, null);
+            if (cur.getCount() > 0) {
+                while (cur.moveToNext()) {
+                    String id = cur.getString(cur.getColumnIndex(ContactsContract.Contacts._ID));
+                    String name = cur.getString(cur.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+                    Integer hasPhone = cur.getInt(cur.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
+                    Log.i("Names", name);
+                    String email = null;
+                    Cursor ce = cr.query(ContactsContract.CommonDataKinds.Email.CONTENT_URI, null,
+                            ContactsContract.CommonDataKinds.Email.CONTACT_ID + " = ?", new String[]{id}, null);
+                    if (ce != null && ce.moveToFirst()) {
+                        email = ce.getString(ce.getColumnIndex(ContactsContract.CommonDataKinds.Email.DATA));
+                        ce.close();
                     }
-                    phones.close();
-                }
-                if (isStop) {
-                    break;
+                    if (Integer.parseInt(cur.getString(cur.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))) > 0) {
+                        // Query phone here. Covered next
+                        Cursor phones = context.getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id, null, null);
+                        while (phones.moveToNext()) {
+                            String phoneNumber = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)).replace(" ", "");
+//                        Log.i("Number", phoneNumber +  email);
+                            if (isTen) {
+                                if (isTenBeforeChange(phoneNumber)) {
+                                    String LastPart = phoneNumber.substring(3, phoneNumber.length());
+                                    arrTestResuiltLocal.add(new TestResuilt(id,
+                                            name,
+                                            phoneNumber,
+                                            getFirstPartTransferEleven(phoneNumber) + LastPart,
+                                            email,
+                                            false));
+                                }
+                            } else {
+                                if (isElevenBeforeChange(phoneNumber)) {
+                                    String LastPart = phoneNumber.substring(4, phoneNumber.length());
+                                    arrTestResuiltLocal.add(new TestResuilt(id, name, phoneNumber, getFirstPartTransferTen(phoneNumber) + LastPart, email, false));
+                                }
+                            }
+                            if (numberUneed != 0 && arrTestResuiltLocal.size() == numberUneed) {
+                                isStop = true;
+                                break;
+                            }
+                        }
+                        phones.close();
+                    }
+                    if (isStop) {
+                        break;
+                    }
                 }
             }
+        } catch (Exception e) {
+            Log.d("VinhCNLog", "Catch");
+            arrTestResuiltLocal = null;
+        } finally {
+            return arrTestResuiltLocal;
         }
-        return arrTestResuilt;
     }
 
-    public void showDialogInform(String msg, final Context context){
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                context);
 
-        // set title
-        alertDialogBuilder.setTitle("Thông báo");
-
-        // set dialog message
-        alertDialogBuilder
-                .setMessage(msg)
-                .setCancelable(false)
-                .setPositiveButton("OK",new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int id) {
+    public void showDialogInform(String msg, final Context context, final boolean isShowConfirm) {
+        android.support.v7.app.AlertDialog alertDialog = new android.support.v7.app.AlertDialog.Builder(context).create();
+        alertDialog.setTitle("Thông báo");
+        alertDialog.setMessage(msg);
+        alertDialog.setButton(android.support.v7.app.AlertDialog.BUTTON_POSITIVE, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (isShowConfirm) {
+                            Toast.makeText(context, "Vui lòng  trở về màn hình trước", Toast.LENGTH_SHORT).show();
+                        }
+                        dialog.dismiss();
                     }
                 });
-//                .setNegativeButton("CANCEL",new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        Toast.makeText(context, "CANCEL button click ", Toast.LENGTH_SHORT).show();
-//
-//                        dialog.cancel();
-//                    }
-//                });
-
-        // create alert dialog
-        AlertDialog alertDialog = alertDialogBuilder.create();
-
-        // show it
         alertDialog.show();
+    }
 
+
+    public void beginWorking() {
+
+    }
+
+    public void checkRunTimePermission(Context context) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ActivityCompat.checkSelfPermission(context, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions((Activity) context, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_CONTACTS},
+                        11111);
+                return;
+            } else {
+                beginWorking();
+            }
+        } else {
+            beginWorking();
+        }
+
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == 11111) {
+            beginWorking();
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
 
@@ -127,7 +148,7 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
                 break;
@@ -403,8 +424,8 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public void showProgessUpdate(String s, Context context, int size){
-        mProgressDialog  = new ProgressDialog(context);
+    public void showProgessUpdate(String s, Context context, int size) {
+        mProgressDialog = new ProgressDialog(context);
         mProgressDialog.setMessage(s);
         mProgressDialog.setIndeterminate(false);
         mProgressDialog.setCanceledOnTouchOutside(false);
@@ -414,14 +435,14 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onDestroy(){
+    public void onDestroy() {
         super.onDestroy();
-        if ( mProgressDialog!=null && mProgressDialog.isShowing() ){
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.cancel();
         }
     }
 
-    public void initActionbar(){
+    public void initActionbar() {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);

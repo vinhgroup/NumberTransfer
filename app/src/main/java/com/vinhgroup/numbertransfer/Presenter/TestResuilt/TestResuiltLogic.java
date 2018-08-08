@@ -7,6 +7,8 @@ import com.vinhgroup.numbertransfer.Base.TestResuiltBase;
 import com.vinhgroup.numbertransfer.R;
 import com.vinhgroup.numbertransfer.View.Test.TestResuiltView;
 
+import java.util.ArrayList;
+
 /**
  * Created by Vinh on 6/5/2018.
  */
@@ -24,11 +26,16 @@ public class TestResuiltLogic extends TestResuiltBase implements TestResuiltImp 
     @Override
     public void getPhoneContacts(boolean isTransfer) {
         arrTestResuilt = getNumberPhones(context, 5, false);
-        testResuiltAdapter = new TestResuiltAdapter(context, arrTestResuilt, isTransfer);
-        mTestResuiltView.setListAdapter(testResuiltAdapter);
-        if (arrTestResuilt.size()==0){
-            showDialogInform(context.getString(R.string.cant_see_any_number), context);
+        if (arrTestResuilt!=null){
+            testResuiltAdapter = new TestResuiltAdapter(context, arrTestResuilt, isTransfer);
+            mTestResuiltView.setListAdapter(testResuiltAdapter);
+            if (arrTestResuilt.size()==0){
+                showDialogInform(context.getString(R.string.cant_see_any_number), context, false);
+            }
+        }else {
+            showDialogInform(context.getString(R.string.please_allow_me_to_change), context, true);
         }
+
     }
 
 

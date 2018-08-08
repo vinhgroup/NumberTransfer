@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -38,15 +39,15 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.button_guide:
                 startActivity(new Intent(this, GuideActivity.class));
-                finish();
+//                finish();
                 break;
             case R.id.button_transfer:
                 startActivity(new Intent(this, TransferActivity.class));
-                finish();
+//                finish();
                 break;
             case R.id.button_return:
                 startActivity(new Intent(this, Reverse.class));
-                finish();
+//                finish();
                 break;
             case R.id.button_information:
                 break;
@@ -56,6 +57,12 @@ public class MainActivity extends AppCompatActivity {
             default:
                 break;
         }
+    }
+
+    @Override
+    protected void onResume() {
+        Log.d("VinhCN: ", "onResume");
+        super.onResume();
     }
 
     @Override

@@ -42,6 +42,7 @@ public class TestResuiltActivity extends TestResuiltBase implements TestResuiltV
                 break;
             case R.id.button_back_to_home_resuilt:
                 onBackPressed();
+                finish();
                 break;
             default:
                 break;
@@ -56,8 +57,8 @@ public class TestResuiltActivity extends TestResuiltBase implements TestResuiltV
         ButterKnife.bind(this);
         getSupportActionBar().setTitle("Chuyển Thử");
         mTestResuiltLogic = new TestResuiltLogic(this, this);
-        mTestResuiltLogic.getPhoneContacts(false);
-
+//        mTestResuiltLogic.getPhoneContacts(false);
+        checkRunTimePermission(this);
 //        startActivity(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI));
     }
 
@@ -67,6 +68,9 @@ public class TestResuiltActivity extends TestResuiltBase implements TestResuiltV
     }
 
 
+    public void beginWorking() {
+        mTestResuiltLogic.getPhoneContacts(false);
+    }
 
 
 

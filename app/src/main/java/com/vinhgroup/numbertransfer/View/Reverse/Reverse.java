@@ -64,6 +64,13 @@ public class Reverse extends ReverseBase implements ReverseView {
         getSupportActionBar().setTitle("Chuyển 10 sang 11");
 //        getSupportActionBar().setIcon(R.drawable.baseline_cached_24);
         mReverseLogic = new ReverseLogic(this, this);
+        checkRunTimePermission(this);
+    }
+
+
+
+
+    public void beginWorking(){
         mReverseLogic.getNumber10();
     }
 

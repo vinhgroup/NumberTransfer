@@ -1,8 +1,10 @@
 package com.vinhgroup.numbertransfer.Presenter.Transfer;
 
+import android.app.AlertDialog;
 import android.content.ContentProviderOperation;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.provider.ContactsContract;
 import android.widget.Toast;
@@ -152,12 +154,16 @@ public class TransferLogic extends TransferBase implements TransferImp {
 
         @Override
         protected void onPostExecute(List<TestResuilt> testResuilts) {
-            adapter = new TestResuiltAdapter(context, arrTestResuilt, true);
-            mTransferView.setListAdapter(adapter);
-            mTransferView.closeProgress();
-            if (arrTestResuilt.size()==0){
-                showDialogInform(context.getString(R.string.cant_see_any_number), context);
+            if (arrTestResuilt!=null){
+                adapter = new TestResuiltAdapter(context, arrTestResuilt, true);
+                mTransferView.setListAdapter(adapter);
+                if (arrTestResuilt.size()==0){
+                    showDialogInform(context.getString(R.string.cant_see_any_number), context, false);
+                }
+            }else {
+                showDialogInform(context.getString(R.string.please_allow_me_to_change), context, true);
             }
+            mTransferView.closeProgress();
             super.onPostExecute(testResuilts);
         }
     }

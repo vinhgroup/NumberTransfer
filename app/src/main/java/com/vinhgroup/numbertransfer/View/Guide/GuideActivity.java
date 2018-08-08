@@ -52,4 +52,6 @@ public class GuideActivity extends BaseActivity {
         ButterKnife.bind(this);
         getSupportActionBar().setTitle("Hướng dẫn");
     }
+
+
 }

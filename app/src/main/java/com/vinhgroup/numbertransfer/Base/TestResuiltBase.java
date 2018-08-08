@@ -12,6 +12,5 @@ import com.vinhgroup.numbertransfer.Presenter.TestResuilt.TestResuiltLogic;
 public class TestResuiltBase extends BaseActivity {
     public TestResuiltLogic mTestResuiltLogic;
     public Uri uriContact;
-
     public TestResuiltAdapter testResuiltAdapter;
 }

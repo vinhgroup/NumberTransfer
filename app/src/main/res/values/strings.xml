@@ -10,4 +10,5 @@
     <string name="completed">Hoàn tất chuyển đổi</string>
     <string name="loading_please_wait">Đang tải dữ liệu, vui lòng đợi giây lát ...</string>
     <string name="cant_see_any_number">Không tìm thấy bất cứ số liên lạc cần thay đổi, vui lòng trở lại...</string>
+    <string name="please_allow_me_to_change">Vui lòng thực hiện lại, cho phép ứng dụng truy cập vào danh bạ của bạn bằng nút ALLOW hoặc CHO PHÉP</string>
 </resources>

@@ -52,6 +52,7 @@ public class TransferActivity extends TransferBase implements TransferView {
         //super.onBackPressed();
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,8 +60,11 @@ public class TransferActivity extends TransferBase implements TransferView {
         ButterKnife.bind(this);
         getSupportActionBar().setTitle("Chuyển 11 sang 10");
         mTransferLogic = new TransferLogic(this, this);
-        mTransferLogic.getNumberPhones();
+        checkRunTimePermission(this);
+    }
 
+    public void beginWorking() {
+        mTransferLogic.getNumberPhones();
     }
 
     @Override
@@ -72,6 +76,8 @@ public class TransferActivity extends TransferBase implements TransferView {
     public void showProgress() {
         showProgressDialog(getString(R.string.loading_please_wait), TransferActivity.this);
     }
+
+
 
     @Override
     public void closeProgress() {
