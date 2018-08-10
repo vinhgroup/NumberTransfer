@@ -8,6 +8,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.vinhgroup.numbertransfer.Base.BaseActivity;
 import com.vinhgroup.numbertransfer.R;
 import com.vinhgroup.numbertransfer.View.Guide.GuideActivity;
@@ -19,7 +23,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Optional;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @BindView(R.id.button_guide)
     Button btnGuide;
@@ -31,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnInfor;
     @BindView(R.id.exit)
     Button btnExit;
+
 
     @SuppressLint("NewApi")
     @Optional
@@ -66,6 +71,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -73,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.drawable.baseline_cached_24);
         getSupportActionBar().setTitle(" Chuyển đổi đầu số");
+        initAdsBottomBanner(this);
+
+
 
     }
 }

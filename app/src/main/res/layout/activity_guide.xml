@@ -3,50 +3,66 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:padding="20dp"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
+    android:gravity="center"
+    android:padding="@dimen/_10sdp"
     tools:context="com.vinhgroup.numbertransfer.View.Guide.GuideActivity">
 
-    <TextView
-        android:textSize="50dp"
-        android:layout_gravity="center"
-        android:text="Hướng dẫn"
+    <LinearLayout
+        android:layout_weight="1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Hướng dẫn"
+            android:textSize="50dp" />
 
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:lineSpacingExtra="10dp"
+            android:text="@string/guide_line" />
 
 
-    <TextView
-        android:lineSpacingExtra="10dp"
-        android:text="@string/guide_line"
-        android:layout_gravity="center"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="Chọn thử chuyển đổi 5 số điện thoại ngẫu nhiên trong danh bạ để kiểm tra độ chính xác của phần mềm"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/button_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="chọn thử" />
+
+        <Button
+            android:id="@+id/button_back_to_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="quay lại trang chủ" />
+
+    </LinearLayout>
+
+
+    <include
+        android:id="@+id/ads_bar"
+        layout="@layout/ads_bar"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-
-    <TextView
-        android:visibility="gone"
-        android:layout_marginTop="30dp"
-        android:text="Chọn thử chuyển đổi 5 số điện thoại ngẫu nhiên trong danh bạ để kiểm tra độ chính xác của phần mềm"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/button_test"
-        android:text="chọn thử"
-        android:layout_gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/button_back_to_home"
-        android:text="quay lại trang chủ"
-        android:layout_gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true">
+    </include>
 
 </LinearLayout>

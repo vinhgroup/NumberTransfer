@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -20,16 +21,27 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.vinhgroup.numbertransfer.Model.TestResuilt.TestResuilt;
+import com.vinhgroup.numbertransfer.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
 
 /**
  * Created by Vinh on 6/4/2018.
  */
 
 public class BaseActivity extends SumBase {
+
+
+    @BindView(R.id.adView)
+    AdView mAdView;
 
     public List<TestResuilt> getNumberPhones(Context context, int numberUneed, boolean isTen) {
         List<TestResuilt> arrTestResuiltLocal = new ArrayList<>();
@@ -95,14 +107,15 @@ public class BaseActivity extends SumBase {
 
 
     public void showDialogInform(String msg, final Context context, final boolean isShowConfirm) {
-        android.support.v7.app.AlertDialog alertDialog = new android.support.v7.app.AlertDialog.Builder(context).create();
-        alertDialog.setTitle("Thông báo");
+       final AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+//        alertDialog.setTitle("Thông báo");
         alertDialog.setMessage(msg);
         alertDialog.setButton(android.support.v7.app.AlertDialog.BUTTON_POSITIVE, "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        if (isShowConfirm) {
-                            Toast.makeText(context, "Vui lòng  trở về màn hình trước", Toast.LENGTH_SHORT).show();
+                        if (isShowConfirm){
+                            onBackPressed();
+                            // Toast.makeText(context, "Vui lòng  trở về màn hình trước", Toast.LENGTH_SHORT).show();
                         }
                         dialog.dismiss();
                     }
@@ -115,7 +128,9 @@ public class BaseActivity extends SumBase {
 
     }
 
+    Context contextRequest;
     public void checkRunTimePermission(Context context) {
+        contextRequest = context;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ActivityCompat.checkSelfPermission(context, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions((Activity) context, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_CONTACTS},
@@ -134,7 +149,15 @@ public class BaseActivity extends SumBase {
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         if (requestCode == 11111) {
-            beginWorking();
+            int size = permissions.length;
+            int size2 = grantResults.length;
+            Log.d("VinhCNLog: ",  size + size2 + "");
+            if (ActivityCompat.shouldShowRequestPermissionRationale((Activity) contextRequest, Manifest.permission.READ_CONTACTS)){
+                showDialogInform(contextRequest.getString(R.string.please_allow_me_to_change), contextRequest, true);
+            }else{
+                beginWorking();
+            }
+
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
@@ -144,6 +167,42 @@ public class BaseActivity extends SumBase {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         initActionbar();
         super.onCreate(savedInstanceState);
+    }
+
+
+    public void initAdsBottomBanner(Context context) {
+        MobileAds.initialize(context, getString(R.string.ads_mod_id));
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                // Code to be executed when an ad request fails.
+            }
+
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                // Code to be executed when the user has left the app.
+            }
+
+            @Override
+            public void onAdClosed() {
+                // Code to be executed when when the user is about to return
+                // to the app after tapping on an ad.
+            }
+        });
     }
 
     @Override

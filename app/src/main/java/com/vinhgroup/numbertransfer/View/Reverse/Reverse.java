@@ -49,12 +49,12 @@ public class Reverse extends ReverseBase implements ReverseView {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
-        //super.onBackPressed();
-    }
+//    @Override
+//    public void onBackPressed() {
+//        startActivity(new Intent(this, MainActivity.class));
+//        finish();
+//        //super.onBackPressed();
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +62,7 @@ public class Reverse extends ReverseBase implements ReverseView {
         setContentView(R.layout.activity_reverse);
         ButterKnife.bind(this);
         getSupportActionBar().setTitle("Chuyển 10 sang 11");
+        initAdsBottomBanner(this);
 //        getSupportActionBar().setIcon(R.drawable.baseline_cached_24);
         mReverseLogic = new ReverseLogic(this, this);
         checkRunTimePermission(this);

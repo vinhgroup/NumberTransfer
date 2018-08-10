@@ -4,11 +4,13 @@
         Bước 1: Nhấn nút chọn tất cả số điện thoại trong danh bạ để thực hiện chuyển đổi, hoặc bạn có thể chọn một vài số tùy ý để bắt đầu chuyển đổi.\n
         Bước 2: Nhấn nút chuyển đổi.\n
         Bước 3: Đợi quá trình chuyển đổi thành công.\n
-        Bước 4: Hoàn tất quá trình chuyển đổi và chương trình sẽ tự động lưu danh bạ mới cho các bạn</string>
+        Bước 4: Hoàn tất quá trình chuyển đổi và chương trình sẽ tự động lưu danh bạ mới</string>
     <string name="please_wait">Vui lòng đợi trong giây lát....</string>
     <string name="please_do_not_turn_off_application">Vui lòng không tắt ứng dụng. Trước khi quá trình hoàn tất...</string>
     <string name="completed">Hoàn tất chuyển đổi</string>
-    <string name="loading_please_wait">Đang tải dữ liệu, vui lòng đợi giây lát ...</string>
+    <string name="loading_please_wait">Đang tải dữ liệu, xin vui lòng đợi giây lát, quá trình mất khoảng 1 phút ...</string>
     <string name="cant_see_any_number">Không tìm thấy bất cứ số liên lạc cần thay đổi, vui lòng trở lại...</string>
     <string name="please_allow_me_to_change">Vui lòng thực hiện lại, cho phép ứng dụng truy cập vào danh bạ của bạn bằng nút ALLOW hoặc CHO PHÉP</string>
+    <string name="banner_bottom_id">ca-app-pub-9633764788196848/6873461894</string>
+    <string name="ads_mod_id">ca-app-pub-9633764788196848~7719639706</string>
 </resources>

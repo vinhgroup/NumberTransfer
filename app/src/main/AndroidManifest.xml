@@ -12,17 +12,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.Home.MainActivity">
+        <activity
+            android:name=".View.Home.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.Guide.GuideActivity" />
-        <activity android:name=".View.Test.TestResuiltActivity" />
-        <activity android:name=".View.Transfer.TransferActivity"></activity>
-        <activity android:name=".View.Reverse.Reverse"></activity>
+        <activity
+            android:name=".View.Guide.GuideActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.Test.TestResuiltActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.Transfer.TransferActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".View.Reverse.Reverse"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

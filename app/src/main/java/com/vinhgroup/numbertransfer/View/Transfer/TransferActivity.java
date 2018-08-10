@@ -37,7 +37,6 @@ public class TransferActivity extends TransferBase implements TransferView {
                 break;
             case R.id.button_back_to_home:
                 onBackPressed();
-                finish();
                 break;
             case R.id.check_box_all:
                 mTransferLogic.setCheckAll(cbAll.isChecked());
@@ -45,12 +44,12 @@ public class TransferActivity extends TransferBase implements TransferView {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
-        //super.onBackPressed();
-    }
+//    @Override
+//    public void onBackPressed() {
+//        startActivity(new Intent(this, MainActivity.class));
+//        finish();
+//        //super.onBackPressed();
+//    }
 
 
     @Override
@@ -59,6 +58,7 @@ public class TransferActivity extends TransferBase implements TransferView {
         setContentView(R.layout.activity_transfer);
         ButterKnife.bind(this);
         getSupportActionBar().setTitle("Chuyển 11 sang 10");
+        initAdsBottomBanner(this);
         mTransferLogic = new TransferLogic(this, this);
         checkRunTimePermission(this);
     }

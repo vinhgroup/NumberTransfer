@@ -5,9 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp"
+    android:paddingTop="@dimen/_10sdp"
+    android:gravity="center"
+    android:paddingLeft="@dimen/_10sdp"
+    android:paddingRight="@dimen/_10sdp"
     tools:context="com.vinhgroup.numbertransfer.View.Transfer.TransferActivity">
 
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp">
 
     <CheckBox
         android:id="@+id/check_box_all_reverse"
@@ -40,4 +49,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
+
+    </LinearLayout>
+
+    <include
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ads_bar"
+        layout="@layout/ads_bar"
+        android:layout_alignParentBottom="true">
+
+    </include>
+
 </LinearLayout>
