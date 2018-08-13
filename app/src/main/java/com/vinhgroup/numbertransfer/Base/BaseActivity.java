@@ -10,6 +10,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -107,8 +109,8 @@ public class BaseActivity extends SumBase {
 
 
     public void showDialogInform(String msg, final Context context, final boolean isShowConfirm) {
-       final AlertDialog alertDialog = new AlertDialog.Builder(context).create();
-//        alertDialog.setTitle("Thông báo");
+       final AlertDialog alertDialog = new AlertDialog.Builder(context, android.R.style.Theme_Holo_Light_Dialog_MinWidth ).create();
+        alertDialog.setTitle("Thông báo");
         alertDialog.setMessage(msg);
         alertDialog.setButton(android.support.v7.app.AlertDialog.BUTTON_POSITIVE, "OK",
                 new DialogInterface.OnClickListener() {
@@ -120,6 +122,7 @@ public class BaseActivity extends SumBase {
                         dialog.dismiss();
                     }
                 });
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         alertDialog.show();
     }
 
