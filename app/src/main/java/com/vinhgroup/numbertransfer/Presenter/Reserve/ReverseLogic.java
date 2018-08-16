@@ -5,6 +5,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.vinhgroup.numbertransfer.Adapter.TestResuiltAdapter;
@@ -71,8 +72,6 @@ public class ReverseLogic extends BaseActivity implements ReverseImp {
                 if (arrTestResuilt.size() == 0) {
                     showDialogInform(context.getString(R.string.cant_see_any_number), context, false);
                 }
-            } else {
-                showDialogInform(context.getString(R.string.please_allow_me_to_change), context, true);
             }
             mReverseView.closeProgress();
             super.onPostExecute(testResuilts);
@@ -132,6 +131,10 @@ public class ReverseLogic extends BaseActivity implements ReverseImp {
 
 
     public boolean updateContact(String name, String number, String email, String ContactId) {
+        if (name.equals("Tra Sua")){
+            Log.d("VinhCNLog: ", "Here");
+
+        }
         boolean success = true;
         String phnumexp = "^[0-9]*$";
 

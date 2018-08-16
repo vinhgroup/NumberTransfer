@@ -3,44 +3,57 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
-    android:paddingTop="@dimen/_10sdp"
+    android:orientation="vertical"
     android:paddingLeft="@dimen/_10sdp"
     android:paddingRight="@dimen/_10sdp"
+    android:gravity="center"
+    android:paddingTop="@dimen/_10sdp"
     tools:context="com.vinhgroup.numbertransfer.View.Test.TestResuiltActivity">
 
     <ListView
-        android:layout_weight="2"
         android:id="@+id/lv"
         android:layout_width="wrap_content"
-        android:layout_height="0dp">
-    </ListView>
+        android:layout_height="0dp"
+        android:layout_weight="1"></ListView>
 
     <LinearLayout
-        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:padding="@dimen/_10sdp">
+
         <Button
             android:id="@+id/button_re_choosen"
-            android:text="Chọn lại"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Chọn lại" />
+
         <Button
             android:id="@+id/button_transfer_resuilt"
-            android:text="Chuyển đổi"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Chuyển đổi" />
+
         <Button
             android:id="@+id/button_back_to_home_resuilt"
-            android:text="Trở lại"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Trở lại" />
+
+
     </LinearLayout>
 
+    <include
+        android:id="@+id/ads_bar"
+        layout="@layout/ads_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true">
+
+    </include>
 
 
 </LinearLayout>

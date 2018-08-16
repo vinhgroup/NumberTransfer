@@ -63,11 +63,14 @@ public class BaseActivity extends SumBase {
                             ContactsContract.CommonDataKinds.Email.CONTACT_ID + " = ?", new String[]{id}, null);
                     if (ce != null && ce.moveToFirst()) {
                         email = ce.getString(ce.getColumnIndex(ContactsContract.CommonDataKinds.Email.DATA));
-                        ce.close();
                     }
+                    ce.close();
                     if (Integer.parseInt(cur.getString(cur.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))) > 0) {
                         // Query phone here. Covered next
                         Cursor phones = context.getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id, null, null);
+                        if (phones == null) {
+                            Log.d("VinhCNLog: ", "OK");
+                        }
                         while (phones.moveToNext()) {
                             String phoneNumber = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)).replace(" ", "");
 //                        Log.i("Number", phoneNumber +  email);
@@ -93,15 +96,17 @@ public class BaseActivity extends SumBase {
                             }
                         }
                         phones.close();
+
                     }
                     if (isStop) {
                         break;
                     }
                 }
             }
+            cur.close();
         } catch (Exception e) {
             Log.d("VinhCNLog", "Catch");
-            arrTestResuiltLocal = null;
+//            arrTestResuiltLocal = null;
         } finally {
             return arrTestResuiltLocal;
         }
@@ -109,13 +114,13 @@ public class BaseActivity extends SumBase {
 
 
     public void showDialogInform(String msg, final Context context, final boolean isShowConfirm) {
-       final AlertDialog alertDialog = new AlertDialog.Builder(context, android.R.style.Theme_Holo_Light_Dialog_MinWidth ).create();
+        final AlertDialog alertDialog = new AlertDialog.Builder(context, android.R.style.Theme_Holo_Light_Dialog_MinWidth).create();
         alertDialog.setTitle("Thông báo");
         alertDialog.setMessage(msg);
         alertDialog.setButton(android.support.v7.app.AlertDialog.BUTTON_POSITIVE, "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        if (isShowConfirm){
+                        if (isShowConfirm) {
                             onBackPressed();
                             // Toast.makeText(context, "Vui lòng  trở về màn hình trước", Toast.LENGTH_SHORT).show();
                         }
@@ -132,6 +137,7 @@ public class BaseActivity extends SumBase {
     }
 
     Context contextRequest;
+
     public void checkRunTimePermission(Context context) {
         contextRequest = context;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -154,10 +160,10 @@ public class BaseActivity extends SumBase {
         if (requestCode == 11111) {
             int size = permissions.length;
             int size2 = grantResults.length;
-            Log.d("VinhCNLog: ",  size + size2 + "");
-            if (ActivityCompat.shouldShowRequestPermissionRationale((Activity) contextRequest, Manifest.permission.READ_CONTACTS)){
+            Log.d("VinhCNLog: ", size + size2 + "");
+            if (ActivityCompat.shouldShowRequestPermissionRationale((Activity) contextRequest, Manifest.permission.READ_CONTACTS)) {
                 showDialogInform(contextRequest.getString(R.string.please_allow_me_to_change), contextRequest, true);
-            }else{
+            } else {
                 beginWorking();
             }
 
@@ -175,7 +181,7 @@ public class BaseActivity extends SumBase {
 
     public void initAdsBottomBanner(Context context) {
         MobileAds.initialize(context, getString(R.string.ads_mod_id));
-        mAdView = findViewById(R.id.adView);
+//        mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
         mAdView.setAdListener(new AdListener() {

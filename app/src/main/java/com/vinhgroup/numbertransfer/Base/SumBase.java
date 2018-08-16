@@ -8,7 +8,7 @@ import com.vinhgroup.numbertransfer.Model.TestResuilt.TestResuilt;
 import java.util.List;
 
 public class SumBase extends AppCompatActivity {
-    public static int numberUneed = 5;
+    public static int numberUneed = 0;
 
     public List<TestResuilt> arrTestResuilt;
 

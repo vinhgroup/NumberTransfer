@@ -59,6 +59,7 @@ public class TestResuiltActivity extends TestResuiltBase implements TestResuiltV
         mTestResuiltLogic = new TestResuiltLogic(this, this);
 //        mTestResuiltLogic.getPhoneContacts(false);
         checkRunTimePermission(this);
+        initAdsBottomBanner(this);
 //        startActivity(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI));
     }
 

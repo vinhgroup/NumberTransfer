@@ -160,8 +160,6 @@ public class TransferLogic extends TransferBase implements TransferImp {
                 if (arrTestResuilt.size()==0){
                     showDialogInform(context.getString(R.string.cant_see_any_number), context, false);
                 }
-            }else {
-                showDialogInform(context.getString(R.string.please_allow_me_to_change), context, true);
             }
             mTransferView.closeProgress();
             super.onPostExecute(testResuilts);

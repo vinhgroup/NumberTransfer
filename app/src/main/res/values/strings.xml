@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NumberTransfer</string>
+    <string name="app_name">Chuyển đổi đầu số Việt Nam</string>
     <string name="guide_line">Rất đơn giản:\n
         Bước 1: Nhấn nút chọn tất cả số điện thoại trong danh bạ để thực hiện chuyển đổi, hoặc bạn có thể chọn một vài số tùy ý để bắt đầu chuyển đổi.\n
         Bước 2: Nhấn nút chuyển đổi.\n
